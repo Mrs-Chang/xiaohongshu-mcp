@@ -26,6 +26,18 @@ type Feed struct {
 	Index     int      `json:"index"`
 }
 
+// GetFullURL 生成完整的小红书链接
+func (f *Feed) GetFullURL() string {
+	if f.ID == "" {
+		return ""
+	}
+	baseURL := "https://www.xiaohongshu.com/explore/" + f.ID
+	if f.XsecToken != "" {
+		return baseURL + "?xsec_token=" + f.XsecToken
+	}
+	return baseURL
+}
+
 // NoteCard 表示笔记卡片信息
 type NoteCard struct {
 	Type         string       `json:"type"`

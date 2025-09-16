@@ -84,7 +84,8 @@ func (s *AppServer) handlePublishContent(ctx context.Context, args map[string]in
 func (s *AppServer) handleListFeeds(ctx context.Context) *MCPToolResult {
 	logrus.Info("MCP: 获取Feeds列表")
 
-	result, err := s.xiaohongshuService.ListFeeds(ctx)
+	// 使用增强的列表方法，返回包含完整链接的结果
+	result, err := s.xiaohongshuService.ListFeedsWithURLs(ctx)
 	if err != nil {
 		return &MCPToolResult{
 			Content: []MCPContent{{
@@ -133,7 +134,8 @@ func (s *AppServer) handleSearchFeeds(ctx context.Context, args map[string]inter
 
 	logrus.Infof("MCP: 搜索Feeds - 关键词: %s", keyword)
 
-	result, err := s.xiaohongshuService.SearchFeeds(ctx, keyword)
+	// 使用增强的搜索方法，返回包含完整链接的结果
+	result, err := s.xiaohongshuService.SearchFeedsWithURLs(ctx, keyword)
 	if err != nil {
 		return &MCPToolResult{
 			Content: []MCPContent{{

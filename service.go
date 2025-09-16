@@ -47,6 +47,18 @@ type FeedsListResponse struct {
 	Count int                `json:"count"`
 }
 
+// EnhancedFeed 增强的Feed，包含完整链接
+type EnhancedFeed struct {
+	xiaohongshu.Feed
+	FullURL string `json:"full_url"`
+}
+
+// EnhancedFeedsListResponse 增强的Feeds列表响应，包含完整链接
+type EnhancedFeedsListResponse struct {
+	Feeds []EnhancedFeed `json:"feeds"`
+	Count int            `json:"count"`
+}
+
 // CheckLoginStatus 检查登录状态
 func (s *XiaohongshuService) CheckLoginStatus(ctx context.Context) (*LoginStatusResponse, error) {
 	b := browser.NewBrowser(configs.IsHeadless())
@@ -172,6 +184,56 @@ func (s *XiaohongshuService) SearchFeeds(ctx context.Context, keyword string) (*
 	response := &FeedsListResponse{
 		Feeds: feeds,
 		Count: len(feeds),
+	}
+
+	return response, nil
+}
+
+// SearchFeedsWithURLs 搜索Feeds并返回包含完整链接的增强响应
+func (s *XiaohongshuService) SearchFeedsWithURLs(ctx context.Context, keyword string) (*EnhancedFeedsListResponse, error) {
+	// 调用原始搜索方法
+	result, err := s.SearchFeeds(ctx, keyword)
+	if err != nil {
+		return nil, err
+	}
+
+	// 转换为增强的Feed列表
+	enhancedFeeds := make([]EnhancedFeed, len(result.Feeds))
+	for i, feed := range result.Feeds {
+		enhancedFeeds[i] = EnhancedFeed{
+			Feed:    feed,
+			FullURL: feed.GetFullURL(),
+		}
+	}
+
+	response := &EnhancedFeedsListResponse{
+		Feeds: enhancedFeeds,
+		Count: len(enhancedFeeds),
+	}
+
+	return response, nil
+}
+
+// ListFeedsWithURLs 获取Feeds列表并返回包含完整链接的增强响应
+func (s *XiaohongshuService) ListFeedsWithURLs(ctx context.Context) (*EnhancedFeedsListResponse, error) {
+	// 调用原始列表方法
+	result, err := s.ListFeeds(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	// 转换为增强的Feed列表
+	enhancedFeeds := make([]EnhancedFeed, len(result.Feeds))
+	for i, feed := range result.Feeds {
+		enhancedFeeds[i] = EnhancedFeed{
+			Feed:    feed,
+			FullURL: feed.GetFullURL(),
+		}
+	}
+
+	response := &EnhancedFeedsListResponse{
+		Feeds: enhancedFeeds,
+		Count: len(enhancedFeeds),
 	}
 
 	return response, nil

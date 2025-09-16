@@ -281,6 +281,24 @@ func (s *AppServer) processToolsList(request *JSONRPCRequest) *JSONRPCResponse {
 				"required": []string{"feed_id", "xsec_token"},
 			},
 		},
+		{
+			"name":        "generate_url",
+			"description": "生成小红书笔记的完整链接，包含xsec_token参数",
+			"inputSchema": map[string]interface{}{
+				"type": "object",
+				"properties": map[string]interface{}{
+					"feed_id": map[string]interface{}{
+						"type":        "string",
+						"description": "小红书笔记ID，从Feed列表获取",
+					},
+					"xsec_token": map[string]interface{}{
+						"type":        "string",
+						"description": "访问令牌，从Feed列表的xsecToken字段获取（可选）",
+					},
+				},
+				"required": []string{"feed_id"},
+			},
+		},
 	}
 
 	return &JSONRPCResponse{
@@ -327,6 +345,8 @@ func (s *AppServer) processToolCall(ctx context.Context, request *JSONRPCRequest
 		result = s.handlePostComment(ctx, toolArgs)
 	case "download_images":
 		result = s.handleDownloadImages(ctx, toolArgs)
+	case "generate_url":
+		result = s.handleGenerateURL(ctx, toolArgs)
 	default:
 		return &JSONRPCResponse{
 			JSONRPC: "2.0",
