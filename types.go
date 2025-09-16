@@ -86,3 +86,24 @@ type PostCommentResponse struct {
 	Success bool   `json:"success"`
 	Message string `json:"message"`
 }
+
+// DownloadImagesResponse 下载图片响应
+type DownloadImagesResponse struct {
+	FeedID           string                `json:"feed_id"`
+	Title            string                `json:"title"`
+	TotalImages      int                   `json:"total_images"`
+	DownloadedImages []DownloadedImageInfo `json:"downloaded_images"`
+	DownloadDir      string                `json:"download_dir"`
+	Format           string                `json:"format"`
+}
+
+// DownloadedImageInfo 已下载图片信息
+type DownloadedImageInfo struct {
+	Index       int    `json:"index"`
+	OriginalURL string `json:"original_url"`
+	DownloadURL string `json:"download_url"`
+	LocalPath   string `json:"local_path"`
+	FileSize    int64  `json:"file_size"`
+	Width       int    `json:"width"`
+	Height      int    `json:"height"`
+}

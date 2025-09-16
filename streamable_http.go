@@ -252,6 +252,35 @@ func (s *AppServer) processToolsList(request *JSONRPCRequest) *JSONRPCResponse {
 				"required": []string{"feed_id", "xsec_token", "content"},
 			},
 		},
+		{
+			"name":        "download_images",
+			"description": "下载小红书笔记的无水印原图，支持多种格式（PNG、JPEG、WEBP等），基于XHS-Downloader技术原理",
+			"inputSchema": map[string]interface{}{
+				"type": "object",
+				"properties": map[string]interface{}{
+					"feed_id": map[string]interface{}{
+						"type":        "string",
+						"description": "小红书笔记ID，从Feed列表获取",
+					},
+					"xsec_token": map[string]interface{}{
+						"type":        "string",
+						"description": "访问令牌，从Feed列表的xsecToken字段获取",
+					},
+					"format": map[string]interface{}{
+						"type":        "string",
+						"description": "图片格式：png（默认，无损高质量）、jpeg（有损压缩）、webp（现代格式）、heic（苹果格式）、avif（新一代格式）",
+						"default":     "png",
+						"enum":        []string{"png", "jpeg", "webp", "heic", "avif"},
+					},
+					"download_dir": map[string]interface{}{
+						"type":        "string",
+						"description": "下载目录路径，默认为downloads",
+						"default":     "downloads",
+					},
+				},
+				"required": []string{"feed_id", "xsec_token"},
+			},
+		},
 	}
 
 	return &JSONRPCResponse{
@@ -296,6 +325,8 @@ func (s *AppServer) processToolCall(ctx context.Context, request *JSONRPCRequest
 		result = s.handleGetFeedDetail(ctx, toolArgs)
 	case "post_comment_to_feed":
 		result = s.handlePostComment(ctx, toolArgs)
+	case "download_images":
+		result = s.handleDownloadImages(ctx, toolArgs)
 	default:
 		return &JSONRPCResponse{
 			JSONRPC: "2.0",

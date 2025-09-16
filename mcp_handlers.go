@@ -285,3 +285,76 @@ func (s *AppServer) handlePostComment(ctx context.Context, args map[string]inter
 		}},
 	}
 }
+
+// handleDownloadImages 处理下载无水印图片
+func (s *AppServer) handleDownloadImages(ctx context.Context, args map[string]interface{}) *MCPToolResult {
+	logrus.Info("MCP: 下载无水印图片")
+
+	// 解析参数
+	feedID, ok := args["feed_id"].(string)
+	if !ok || feedID == "" {
+		return &MCPToolResult{
+			Content: []MCPContent{{
+				Type: "text",
+				Text: "下载图片失败: 缺少feed_id参数",
+			}},
+			IsError: true,
+		}
+	}
+
+	xsecToken, ok := args["xsec_token"].(string)
+	if !ok || xsecToken == "" {
+		return &MCPToolResult{
+			Content: []MCPContent{{
+				Type: "text",
+				Text: "下载图片失败: 缺少xsec_token参数",
+			}},
+			IsError: true,
+		}
+	}
+
+	// 图片格式参数，默认为PNG
+	format := "png"
+	if formatArg, ok := args["format"].(string); ok && formatArg != "" {
+		format = formatArg
+	}
+
+	// 下载目录参数，默认为downloads
+	downloadDir := "downloads"
+	if dirArg, ok := args["download_dir"].(string); ok && dirArg != "" {
+		downloadDir = dirArg
+	}
+
+	logrus.Infof("MCP: 下载图片 - Feed ID: %s, 格式: %s, 目录: %s", feedID, format, downloadDir)
+
+	// 下载图片
+	result, err := s.xiaohongshuService.DownloadImages(ctx, feedID, xsecToken, format, downloadDir)
+	if err != nil {
+		return &MCPToolResult{
+			Content: []MCPContent{{
+				Type: "text",
+				Text: "下载图片失败: " + err.Error(),
+			}},
+			IsError: true,
+		}
+	}
+
+	// 格式化输出，转换为JSON字符串
+	jsonData, err := json.MarshalIndent(result, "", "  ")
+	if err != nil {
+		return &MCPToolResult{
+			Content: []MCPContent{{
+				Type: "text",
+				Text: fmt.Sprintf("图片下载成功，但序列化失败: %v", err),
+			}},
+			IsError: true,
+		}
+	}
+
+	return &MCPToolResult{
+		Content: []MCPContent{{
+			Type: "text",
+			Text: string(jsonData),
+		}},
+	}
+}

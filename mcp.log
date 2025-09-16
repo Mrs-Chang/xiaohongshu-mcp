@@ -1,0 +1,26 @@
+time="2025-09-16T17:28:43+08:00" level=info msg="启动 HTTP 服务器: :18060"
+time="2025-09-16T17:28:45+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/16 - 17:28:45 | 200 |     557.708µs |             ::1 | POST     "/mcp"
+time="2025-09-16T17:28:47+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/16 - 17:28:47 | 200 |     201.334µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-16T17:28:47+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/16 - 17:28:47 | 200 |      99.833µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-16T17:28:47+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/16 - 17:28:47 | 200 |     188.708µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-16T17:29:38+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-16T17:29:38+08:00" level=info msg="MCP: 下载无水印图片"
+time="2025-09-16T17:29:38+08:00" level=info msg="MCP: 下载图片 - Feed ID: 66287569000000001c009d1e, 格式: png, 目录: downloads"
+[rod] 2025/09/16 17:29:40 [wait] dom-stable <page:E5917CE9>
+time="2025-09-16T17:29:47+08:00" level=info msg="成功下载图片 1: downloads/神金表情包_1.png"
+time="2025-09-16T17:29:48+08:00" level=info msg="成功下载图片 2: downloads/神金表情包_2.png"
+time="2025-09-16T17:29:48+08:00" level=info msg="成功下载图片 3: downloads/神金表情包_3.png"
+time="2025-09-16T17:29:49+08:00" level=info msg="成功下载图片 4: downloads/神金表情包_4.png"
+time="2025-09-16T17:29:49+08:00" level=info msg="成功下载图片 5: downloads/神金表情包_5.png"
+time="2025-09-16T17:29:49+08:00" level=info msg="成功下载图片 6: downloads/神金表情包_6.png"
+time="2025-09-16T17:29:50+08:00" level=info msg="成功下载图片 7: downloads/神金表情包_7.png"
+time="2025-09-16T17:29:51+08:00" level=info msg="成功下载图片 8: downloads/神金表情包_8.png"
+time="2025-09-16T17:29:53+08:00" level=info msg="成功下载图片 9: downloads/神金表情包_9.png"
+time="2025-09-16T17:29:53+08:00" level=info msg="成功下载图片 10: downloads/神金表情包_10.png"
+time="2025-09-16T17:29:55+08:00" level=info msg="成功下载图片 11: downloads/神金表情包_11.png"
+time="2025-09-16T17:29:55+08:00" level=info msg="成功下载图片 12: downloads/神金表情包_12.png"
+[GIN] 2025/09/16 - 17:29:55 | 200 | 17.541424708s |       127.0.0.1 | POST     "/mcp"

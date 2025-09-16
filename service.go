@@ -228,3 +228,42 @@ func (s *XiaohongshuService) PostCommentToFeed(ctx context.Context, feedID, xsec
 
 	return response, nil
 }
+
+// DownloadImages 下载无水印图片
+func (s *XiaohongshuService) DownloadImages(ctx context.Context, feedID, xsecToken, format, downloadDir string) (*DownloadImagesResponse, error) {
+	// 首先获取Feed详情以获取图片信息
+	feedDetail, err := s.GetFeedDetail(ctx, feedID, xsecToken)
+	if err != nil {
+		return nil, fmt.Errorf("获取Feed详情失败: %w", err)
+	}
+
+	// 提取图片数据
+	feedData, ok := feedDetail.Data.(*xiaohongshu.FeedDetailResponse)
+	if !ok {
+		return nil, fmt.Errorf("Feed数据格式错误")
+	}
+
+	if len(feedData.Note.ImageList) == 0 {
+		return nil, fmt.Errorf("该Feed没有图片")
+	}
+
+	// 创建图片下载器
+	downloader := NewImageDownloader()
+
+	// 下载所有图片
+	downloadedImages, err := downloader.DownloadImages(ctx, feedData.Note.ImageList, format, downloadDir, feedData.Note.Title)
+	if err != nil {
+		return nil, fmt.Errorf("下载图片失败: %w", err)
+	}
+
+	response := &DownloadImagesResponse{
+		FeedID:           feedID,
+		Title:            feedData.Note.Title,
+		TotalImages:      len(feedData.Note.ImageList),
+		DownloadedImages: downloadedImages,
+		DownloadDir:      downloadDir,
+		Format:           format,
+	}
+
+	return response, nil
+}

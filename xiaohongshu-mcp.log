@@ -1,0 +1,177 @@
+time="2025-09-12T21:37:43+08:00" level=info msg="启动 HTTP 服务器: :18060"
+time="2025-09-12T21:37:47+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/12 - 21:37:47 | 200 |     899.625µs |             ::1 | POST     "/mcp"
+[GIN] 2025/09/12 - 21:38:01 | 400 |     436.417µs |             ::1 | GET      "/mcp"
+[GIN] 2025/09/12 - 21:38:01 | 404 |        2.75µs |             ::1 | GET      "/favicon.ico"
+time="2025-09-12T21:39:56+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-12T21:39:56+08:00" level=info msg="MCP: 检查登录状态"
+[rod] 2025/09/12 21:39:58 [wait] load <page:8AB3486A>
+[rod] 2025/09/12 21:40:01 [query] rod.element(".main-container .user .link-wrapper .channel")  <page:8AB3486A>
+[GIN] 2025/09/12 - 21:40:03 | 200 |    6.8292645s |             ::1 | POST     "/mcp"
+time="2025-09-12T21:41:39+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-12T21:41:39+08:00" level=info msg="MCP: 发布内容"
+time="2025-09-12T21:41:39+08:00" level=info msg="MCP: 发布内容 - 标题: 🏔️ 新西兰陶波湖的神秘毛利岩雕, 图片数量: 1"
+[rod] 2025/09/12 21:41:47 [query] rod.element("div.upload-content")  <page:21696373>
+[rod] 2025/09/12 21:41:48 [query] rod.element("div.upload-content")  <page:21696373>
+[rod] 2025/09/12 21:41:48 [query] rod.element("div.upload-content")  <page:21696373>
+[rod] 2025/09/12 21:41:49 [query] rod.element("div.upload-content")  <page:21696373>
+[rod] 2025/09/12 21:41:50 [query] rod.element("div.upload-content")  <page:21696373>
+[rod] 2025/09/12 21:41:52 [query] rod.element("div.upload-content")  <page:21696373>
+[rod] 2025/09/12 21:41:53 [query] rod.element("div.upload-content")  <page:21696373>
+[rod] 2025/09/12 21:41:53 [wait] visible <div.upload-content>
+2025/09/12 21:41:53 INFO wait for upload-content visible success
+2025/09/12 21:41:54 INFO foundcreator-tab elements count=4
+[rod] 2025/09/12 21:41:54 [wait] interactable <div.creator-tab>
+[rod] 2025/09/12 21:41:54 [input] scroll into view <div.creator-tab>
+[rod] 2025/09/12 21:41:54 [wait] visible <div.creator-tab>
+[rod] 2025/09/12 21:41:54 [wait] stable RAF <div.creator-tab>
+2025/09/12 21:41:54 ERROR 点击元素失败 error="element has no visible shape or outside the viewport: <div.creator-tab>"
+[rod] 2025/09/12 21:41:54 [wait] interactable <div.creator-tab>
+[rod] 2025/09/12 21:41:54 [input] scroll into view <div.creator-tab>
+[rod] 2025/09/12 21:41:54 [wait] visible <div.creator-tab>
+[rod] 2025/09/12 21:41:54 [wait] stable RAF <div.creator-tab>
+[rod] 2025/09/12 21:41:54 [wait] enabled <div.creator-tab>
+[rod] 2025/09/12 21:41:54 [input] left click <div.creator-tab>
+[rod] 2025/09/12 21:41:55 [query] rod.element(".upload-input")  <page:21696373>
+[rod] 2025/09/12 21:41:55 [input] set files: [/var/folders/1k/gzbhc78j1bdf09nrm_w61ch00000gn/T/xiaohongshu_images/img_0349b5b3a46143cc_1757684506.jpg] <input.upload-input>
+2025/09/12 21:41:55 INFO 开始等待图片上传完成 expected_count=1
+2025/09/12 21:41:58 INFO 等待图片上传中... elapsed_seconds=3
+[rod] 2025/09/12 21:41:58 [query] rod.element("div.d-input input")  <page:21696373>
+2025/09/12 21:41:58 INFO 图片上传完成检测成功 - 方法2（标题输入框可见）
+[rod] 2025/09/12 21:42:03 [query] rod.element("div.d-input input")  <page:21696373>
+[rod] 2025/09/12 21:42:03 [input] scroll into view <input.d-text>
+[rod] 2025/09/12 21:42:03 [wait] visible <input.d-text>
+[rod] 2025/09/12 21:42:03 [wait] stable RAF <input.d-text>
+[rod] 2025/09/12 21:42:03 [wait] enabled <input.d-text>
+[rod] 2025/09/12 21:42:03 [wait] writable <input.d-text>
+[rod] 2025/09/12 21:42:03 [input] insert text 🏔️ 新西兰陶波湖的神秘毛利岩雕 <page:21696373>
+[rod] 2025/09/12 21:42:04 [query] rod.element("div.ql-editor")  <page:21696373>
+[rod] 2025/09/12 21:42:04 [query] () => this.parentElement() p.is-empty.is-editor-empty <page:21696373>
+[rod] 2025/09/12 21:42:05 [input] scroll into view <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:42:05 [wait] visible <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:42:05 [wait] stable RAF <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:42:05 [wait] enabled <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:42:05 [wait] writable <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:42:05 [input] insert text 在新西兰北岛的陶波湖，隐藏着一处令人震撼的文化瑰宝——Ngātoroirangi矿湾毛利岩雕！✨
+
+这些雕刻在湖边岩壁上的艺术品，不仅仅是装饰，更是毛利文化的活化石。高达10米的Ngātoroirangi雕像威严地矗立在湖畔，他是毛利神话中的重要人物，被当地人视为陶波地区的守护神。🗿
+
+💫 文化意义深远：
+• 传承毛利族古老传说与信仰
+• 展现对自然的敬畏与和谐共处
+• 20世纪70年代由毛利艺术家精心创作
+• 融合传统工艺与现代艺术表达
+
+🚤 游览小贴士：
+建议乘船游览陶波湖，从水面上欣赏这些壮观的岩雕，感受毛利文化的独特魅力。清晨或黄昏时分，阳光洒在雕像上，更是美得令人窒息！
+
+这里不仅是摄影爱好者的天堂，更是了解新西兰原住民文化的绝佳窗口。每一道雕痕都诉说着古老的故事，每一个图案都承载着深厚的文化内涵。
+
+#新西兰旅行 #毛利文化 #陶波湖 #文化遗产 #旅行摄影 <page:21696373>
+[rod] 2025/09/12 21:42:06 [query] rod.element("div.submit div.d-button-content")  <page:21696373>
+[rod] 2025/09/12 21:42:06 [wait] interactable <div.d-button-content>
+[rod] 2025/09/12 21:42:06 [input] scroll into view <div.d-button-content>
+[rod] 2025/09/12 21:42:06 [wait] visible <div.d-button-content>
+[rod] 2025/09/12 21:42:06 [wait] stable RAF <div.d-button-content>
+[rod] 2025/09/12 21:42:06 [wait] enabled <div.d-button-content>
+[rod] 2025/09/12 21:42:06 [input] left click <div.d-button-content>
+[GIN] 2025/09/12 - 21:42:09 | 200 | 29.536590583s |             ::1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/12 - 21:42:58 | 200 |    1.345792ms |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/12 - 21:42:58 | 200 |     164.791µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/12 - 21:42:58 | 200 |      70.167µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/12 - 21:42:58 | 200 |      97.334µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/12 - 21:42:58 | 200 |      1.5355ms |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/12 - 21:42:58 | 200 |      54.292µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/12 - 21:42:58 | 200 |       332.5µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/12 - 21:42:58 | 200 |        74.5µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/12 - 21:42:58 | 200 |      54.833µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/12 - 21:42:58 | 200 |     103.375µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/12 - 21:42:58 | 200 |      96.375µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/12 - 21:42:58 | 200 |     109.416µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/12 - 21:42:58 | 200 |       55.75µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/12 - 21:42:58 | 200 |      88.958µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/12 - 21:42:58 | 200 |      58.083µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+time="2025-09-12T21:42:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/12 - 21:42:58 | 200 |       92.75µs |       127.0.0.1 | POST     "/mcp"
+[GIN] 2025/09/12 - 21:42:58 | 200 |      53.791µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:45:34+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-12T21:45:34+08:00" level=info msg="MCP: 检查登录状态"
+[rod] 2025/09/12 21:45:35 [wait] load <page:AA6804AE>
+[rod] 2025/09/12 21:45:39 [query] rod.element(".main-container .user .link-wrapper .channel")  <page:AA6804AE>
+[GIN] 2025/09/12 - 21:45:40 | 200 |  5.905803125s |       127.0.0.1 | POST     "/mcp"
+time="2025-09-12T21:45:53+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-12T21:45:53+08:00" level=info msg="MCP: 发布内容"
+time="2025-09-12T21:45:53+08:00" level=info msg="MCP: 发布内容 - 标题: 纽西兰陶波湖的神秘毛利岩雕 🗿✨, 图片数量: 1"
+[rod] 2025/09/12 21:45:55 [query] rod.element("div.upload-content")  <page:87C7AE14>
+[rod] 2025/09/12 21:45:55 [query] rod.element("div.upload-content")  <page:87C7AE14>
+[rod] 2025/09/12 21:45:55 [query] rod.element("div.upload-content")  <page:87C7AE14>
+[rod] 2025/09/12 21:45:56 [query] rod.element("div.upload-content")  <page:87C7AE14>
+[rod] 2025/09/12 21:45:58 [query] rod.element("div.upload-content")  <page:87C7AE14>
+[rod] 2025/09/12 21:46:00 [query] rod.element("div.upload-content")  <page:87C7AE14>
+[rod] 2025/09/12 21:46:00 [wait] visible <div.upload-content>
+2025/09/12 21:46:00 INFO wait for upload-content visible success
+2025/09/12 21:46:01 INFO foundcreator-tab elements count=4
+[rod] 2025/09/12 21:46:01 [wait] interactable <div.creator-tab>
+[rod] 2025/09/12 21:46:01 [input] scroll into view <div.creator-tab>
+[rod] 2025/09/12 21:46:01 [wait] visible <div.creator-tab>
+[rod] 2025/09/12 21:46:01 [wait] stable RAF <div.creator-tab>
+2025/09/12 21:46:01 ERROR 点击元素失败 error="element has no visible shape or outside the viewport: <div.creator-tab>"
+[rod] 2025/09/12 21:46:01 [wait] interactable <div.creator-tab>
+[rod] 2025/09/12 21:46:01 [input] scroll into view <div.creator-tab>
+[rod] 2025/09/12 21:46:01 [wait] visible <div.creator-tab>
+[rod] 2025/09/12 21:46:01 [wait] stable RAF <div.creator-tab>
+[rod] 2025/09/12 21:46:01 [wait] enabled <div.creator-tab>
+[rod] 2025/09/12 21:46:01 [input] left click <div.creator-tab>
+[rod] 2025/09/12 21:46:02 [query] rod.element(".upload-input")  <page:87C7AE14>
+[rod] 2025/09/12 21:46:02 [input] set files: [/var/folders/1k/gzbhc78j1bdf09nrm_w61ch00000gn/T/xiaohongshu_images/img_0349b5b3a46143cc_1757684754.jpg] <input.upload-input>
+2025/09/12 21:46:02 INFO 开始等待图片上传完成 expected_count=1
+2025/09/12 21:46:05 INFO 等待图片上传中... elapsed_seconds=3
+[rod] 2025/09/12 21:46:05 [query] rod.element("div.d-input input")  <page:87C7AE14>
+2025/09/12 21:46:05 INFO 图片上传完成检测成功 - 方法2（标题输入框可见）
+[rod] 2025/09/12 21:46:10 [query] rod.element("div.d-input input")  <page:87C7AE14>
+[rod] 2025/09/12 21:46:10 [input] scroll into view <input.d-text>
+[rod] 2025/09/12 21:46:10 [wait] visible <input.d-text>
+[rod] 2025/09/12 21:46:10 [wait] stable RAF <input.d-text>
+[rod] 2025/09/12 21:46:10 [wait] enabled <input.d-text>
+[rod] 2025/09/12 21:46:10 [wait] writable <input.d-text>
+[rod] 2025/09/12 21:46:10 [input] insert text 纽西兰陶波湖的神秘毛利岩雕 🗿✨ <page:87C7AE14>
+[rod] 2025/09/12 21:46:11 [query] rod.element("div.ql-editor")  <page:87C7AE14>
+[rod] 2025/09/12 21:46:11 [query] () => this.parentElement() p.is-empty.is-editor-empty <page:87C7AE14>
+[rod] 2025/09/12 21:46:11 [input] scroll into view <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:46:11 [wait] visible <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:46:11 [wait] stable RAF <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:46:11 [wait] enabled <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:46:11 [wait] writable <div.tiptap.ProseMirror>
+[rod] 2025/09/12 21:46:11 [input] insert text 🌊 在纽西兰陶波湖的矿湾，隐藏着一个令人震撼的艺术奇迹——Ngātoroirangi毛利岩雕！
+
+这座巨大的岩雕刻在湖边的岩壁上，是毛利文化的瑰宝 ✨ 雕刻描绘的是毛利传说中的航海家和祭司Ngātoroirangi，他被认为是引导毛利人来到这片土地的重要人物。
+
+🎨 这件现代艺术作品完美融合了传统毛利文化和当代艺术表达，只有乘船才能近距离欣赏这个壮观的雕刻。夕阳西下时，金色的光芒洒在岩雕上，更显神秘庄严。
+
+📍 陶波湖不仅是纽西兰最大的湖泊，更是一个充满毛利文化底蕴的圣地。这里的每一寸土地都述说着古老的传说和智慧。
+
+#纽西兰旅行 #毛利文化 #陶波湖 #岩雕艺术 #新西兰景点 #文化遗产 #旅行打卡 #自然奇观 <page:87C7AE14>
+[rod] 2025/09/12 21:46:12 [query] rod.element("div.submit div.d-button-content")  <page:87C7AE14>
+[rod] 2025/09/12 21:46:12 [wait] interactable <div.d-button-content>
+[rod] 2025/09/12 21:46:12 [input] scroll into view <div.d-button-content>
+[rod] 2025/09/12 21:46:12 [wait] visible <div.d-button-content>
+[rod] 2025/09/12 21:46:12 [wait] stable RAF <div.d-button-content>
+[rod] 2025/09/12 21:46:12 [wait] enabled <div.d-button-content>
+[rod] 2025/09/12 21:46:12 [input] left click <div.d-button-content>
+[GIN] 2025/09/12 - 21:46:15 | 200 | 22.314680417s |       127.0.0.1 | POST     "/mcp"

@@ -90,8 +90,26 @@ func uploadImages(page *rod.Page, imagesPaths []string) error {
 	// 上传多个文件
 	uploadInput.MustSetFiles(imagesPaths...)
 
-	// 等待上传完成
-	time.Sleep(3 * time.Second)
+	// 增加等待时间，确保图片完全上传完成
+	// 根据图片数量调整等待时间，每张图片至少等待5秒
+	waitTime := len(imagesPaths) * 5
+	if waitTime < 10 {
+		waitTime = 10 // 最少等待10秒
+	}
+
+	slog.Info("等待图片上传完成", "图片数量", len(imagesPaths), "等待时间(秒)", waitTime)
+	time.Sleep(time.Duration(waitTime) * time.Second)
+
+	// 尝试检查图片是否上传成功的指示器
+	// 查找可能的上传完成标识
+	page.Timeout(5 * time.Second).Race().
+		Element(".upload-success").MustHandle(func(e *rod.Element) {
+		slog.Info("检测到上传成功标识")
+	}).
+		Element(".image-preview").MustHandle(func(e *rod.Element) {
+		slog.Info("检测到图片预览")
+	}).
+		MustDo()
 
 	return nil
 }
