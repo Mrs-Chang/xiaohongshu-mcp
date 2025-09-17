@@ -1,0 +1,68 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "xpzouying",
+      "name": "zy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3946563?v=4",
+      "profile": "https://haha.ai",
+      "contributions": [
+        "code",
+        "ideas",
+        "doc",
+        "design",
+        "maintenance",
+        "infra",
+        "review"
+      ]
+    },
+    {
+      "login": "esperyong",
+      "name": "clearwater",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1271815?v=4",
+      "profile": "http://www.hwbuluo.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "laryzhong",
+      "name": "Zhongpeng",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47939471?v=4",
+      "profile": "https://github.com/laryzhong",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "DTDucas",
+      "name": "Duong Tran",
+      "avatar_url": "https://avatars.githubusercontent.com/u/105262836?v=4",
+      "profile": "https://github.com/DTDucas",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Angiin",
+      "name": "Angiin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17389304?v=4",
+      "profile": "https://github.com/Angiin",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "xiaohongshu-mcp",
+  "projectOwner": "xpzouying"
+}
