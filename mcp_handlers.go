@@ -141,10 +141,30 @@ func (s *AppServer) handleSearchFeeds(ctx context.Context, args map[string]inter
 		}
 	}
 
-	logrus.Infof("MCP: 搜索Feeds - 关键词: %s", keyword)
+	// 解析可选的滚动参数
+	scrollCount := 0
+	scrollInterval := 0
+
+	if maxResults, ok := args["max_results"].(float64); ok {
+		if maxResults > 0 {
+			// 根据期望的结果数量计算滚动次数
+			// 小红书初始加载约22个帖子，每次滚动大约加载10-20个
+			scrollCount = int(maxResults / 15) // 估算需要的滚动次数
+			if scrollCount > 10 {
+				scrollCount = 10 // 限制最大滚动次数
+			}
+			scrollInterval = 2 // 每次滚动间隔2秒
+		} else if maxResults == -1 {
+			// -1 表示尽可能多的结果
+			scrollCount = 10
+			scrollInterval = 2
+		}
+	}
+
+	logrus.Infof("MCP: 搜索Feeds - 关键词: %s, 滚动次数: %d", keyword, scrollCount)
 
 	// 使用增强的搜索方法，返回包含完整链接的结果
-	result, err := s.xiaohongshuService.SearchFeedsWithURLs(ctx, keyword)
+	result, err := s.xiaohongshuService.SearchFeedsWithURLsAndScroll(ctx, keyword, scrollCount, scrollInterval)
 	if err != nil {
 		return &MCPToolResult{
 			Content: []MCPContent{{

@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/mattn/go-runewidth"
 	"github.com/xpzouying/headless_browser"
@@ -171,6 +172,11 @@ func (s *XiaohongshuService) ListFeeds(ctx context.Context) (*FeedsListResponse,
 }
 
 func (s *XiaohongshuService) SearchFeeds(ctx context.Context, keyword string) (*FeedsListResponse, error) {
+	return s.SearchFeedsWithScroll(ctx, keyword, 0, 0)
+}
+
+// SearchFeedsWithScroll 带滚动功能的搜索
+func (s *XiaohongshuService) SearchFeedsWithScroll(ctx context.Context, keyword string, scrollCount int, scrollIntervalSeconds int) (*FeedsListResponse, error) {
 	b := newBrowser()
 	defer b.Close()
 
@@ -179,7 +185,13 @@ func (s *XiaohongshuService) SearchFeeds(ctx context.Context, keyword string) (*
 
 	action := xiaohongshu.NewSearchAction(page)
 
-	feeds, err := action.Search(ctx, keyword)
+	// 转换滚动间隔为时间类型
+	var scrollInterval time.Duration
+	if scrollIntervalSeconds > 0 {
+		scrollInterval = time.Duration(scrollIntervalSeconds) * time.Second
+	}
+
+	feeds, err := action.SearchWithScroll(ctx, keyword, scrollCount, scrollInterval)
 	if err != nil {
 		return nil, err
 	}
@@ -194,8 +206,13 @@ func (s *XiaohongshuService) SearchFeeds(ctx context.Context, keyword string) (*
 
 // SearchFeedsWithURLs 搜索Feeds并返回包含完整链接的增强响应
 func (s *XiaohongshuService) SearchFeedsWithURLs(ctx context.Context, keyword string) (*EnhancedFeedsListResponse, error) {
-	// 调用原始搜索方法
-	result, err := s.SearchFeeds(ctx, keyword)
+	return s.SearchFeedsWithURLsAndScroll(ctx, keyword, 0, 0)
+}
+
+// SearchFeedsWithURLsAndScroll 带滚动功能的搜索并返回包含完整链接的增强响应
+func (s *XiaohongshuService) SearchFeedsWithURLsAndScroll(ctx context.Context, keyword string, scrollCount int, scrollIntervalSeconds int) (*EnhancedFeedsListResponse, error) {
+	// 调用带滚动功能的搜索方法
+	result, err := s.SearchFeedsWithScroll(ctx, keyword, scrollCount, scrollIntervalSeconds)
 	if err != nil {
 		return nil, err
 	}
