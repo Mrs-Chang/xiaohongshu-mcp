@@ -34,6 +34,40 @@ go.work.sum
 
 # Build artifacts
 xiaohongshu-mcp
+xiaohongshu-mcp-test
 
 # Test scripts
 test_*.sh
+
+# 日志文件
+*.log
+mcp.log
+xiaohongshu-mcp.log
+
+# 进程ID文件
+*.pid
+mcp.pid
+xiaohongshu-mcp.pid
+
+# 下载内容和缓存
+downloads/
+xiaohongshu_images/
+/tmp/xiaohongshu_images/
+
+# Cookies和用户数据
+cookies.json
+/tmp/cookies.json
+
+# 浏览器用户数据目录
+chrome-user-data/
+chromium-user-data/
+user-data/
+
+# 临时文件
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# 运行时生成的工具
+login_tool
