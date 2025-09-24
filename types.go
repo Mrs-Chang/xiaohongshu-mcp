@@ -107,3 +107,9 @@ type DownloadedImageInfo struct {
 	Width       int    `json:"width"`
 	Height      int    `json:"height"`
 }
+
+// UserProfileRequest 用户主页请求
+type UserProfileRequest struct {
+	UserID    string `json:"user_id" binding:"required"`
+	XsecToken string `json:"xsec_token" binding:"required"`
+}

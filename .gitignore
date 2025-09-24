@@ -71,3 +71,6 @@ Thumbs.db
 
 # 运行时生成的工具
 login_tool
+
+# Cookies files (contain sensitive login information)
+cookies.json

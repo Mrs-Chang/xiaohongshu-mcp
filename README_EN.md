@@ -1,4 +1,7 @@
 # xiaohongshu-mcp
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 MCP for RedNote (Xiaohongshu) platform.
 
@@ -31,6 +34,26 @@ https://github.com/user-attachments/assets/bd9a9a4a-58cb-4421-b8f3-015f703ce1f9
 <summary><b>2. Publish Image and Text Content</b></summary>
 
 Supports publishing image and text content to RedNote, including title, content description, and images. More publishing features will be supported later.
+
+**Image Support Methods:**
+
+Supports two image input methods:
+
+1. **HTTP/HTTPS Image Links**
+   ```
+   ["https://example.com/image1.jpg", "https://example.com/image2.png"]
+   ```
+
+2. **Local Image Absolute Paths** (Recommended)
+   ```
+   ["/Users/username/Pictures/image1.jpg", "/home/user/images/image2.png"]
+   ```
+
+**Why Local Paths are Recommended:**
+- ✅ Better stability, not dependent on network
+- ✅ Faster upload speed
+- ✅ Avoid image link expiration issues
+- ✅ Support more image formats
 
 **Publish Image-Text Post Demo:**
 
@@ -105,6 +128,31 @@ https://github.com/user-attachments/assets/cc385b6c-422c-489b-a5fc-63e92c695b80
 
 </details>
 
+<details>
+<summary><b>7. Get User Profile</b></summary>
+
+Get RedNote user's personal profile information, including basic user information and note content.
+
+**Feature Description:**
+
+- Get user basic information (nickname, bio, avatar, etc.)
+- Get follower count, following count, likes count statistics
+- Get user's published note content list
+- Supports HTTP API and MCP tool calls
+
+**⚠️ Important Note:**
+
+- Must login first to use this feature
+- Need to provide user ID and xsec_token
+- These parameters can be obtained from Feed list or search results
+
+**Returned Information Includes:**
+- User basic info: nickname, bio, avatar, verification status
+- Statistics: following count, follower count, likes count, note count
+- Note list: all public notes published by the user
+
+</details>
+
 **RedNote Basic Operation Knowledge**
 
 - **Title: (Very Important) RedNote requires titles to not exceed 20 characters**
@@ -135,10 +183,41 @@ Results after about a week
 
 ## 1. Usage Tutorial
 
-### 1.1. Installation
+### 1.1. Quick Start (Recommended)
+
+**Method 1: Download Pre-compiled Binaries**
+
+Download pre-compiled binaries for your platform directly from [GitHub Releases](https://github.com/xpzouying/xiaohongshu-mcp/releases):
+
+**Main Program (MCP Service):**
+- **macOS Apple Silicon**: `xiaohongshu-mcp-darwin-arm64`
+- **macOS Intel**: `xiaohongshu-mcp-darwin-amd64`
+- **Windows x64**: `xiaohongshu-mcp-windows-amd64.exe`
+- **Linux x64**: `xiaohongshu-mcp-linux-amd64`
+
+**Login Tool:**
+- **macOS Apple Silicon**: `xiaohongshu-login-darwin-arm64`
+- **macOS Intel**: `xiaohongshu-login-darwin-amd64`
+- **Windows x64**: `xiaohongshu-login-windows-amd64.exe`
+- **Linux x64**: `xiaohongshu-login-linux-amd64`
+
+Usage Steps:
+```bash
+# 1. First run the login tool
+chmod +x xiaohongshu-login-darwin-arm64
+./xiaohongshu-login-darwin-arm64
+
+# 2. Then start the MCP service
+chmod +x xiaohongshu-mcp-darwin-arm64
+./xiaohongshu-mcp-darwin-arm64
+```
+
+**⚠️ Important Note**: The headless browser will be automatically downloaded on first run (about 150MB), please ensure a stable network connection. Subsequent runs will not require re-downloading.
+
+**Method 2: Build from Source**
 
 <details>
-<summary>Installation Configuration Details</summary>
+<summary>Build from Source Details</summary>
 
 Requires Golang environment. For installation instructions, please refer to [Golang Official Documentation](https://go.dev/doc/install).
 
@@ -165,8 +244,13 @@ For Windows issues, check here first: [Windows Installation Guide](./docs/window
 
 First time requires manual login to save RedNote login status.
 
-Run
+**Using Binary Files:**
+```bash
+# Run the login tool for your platform
+./xiaohongshu-login-darwin-arm64
+```
 
+**Using Source Code:**
 ```bash
 go run cmd/login/main.go
 ```
@@ -175,8 +259,17 @@ go run cmd/login/main.go
 
 Start xiaohongshu-mcp service.
 
+**Using Binary Files:**
 ```bash
+# Default: Headless mode, no browser interface
+./xiaohongshu-mcp-darwin-arm64
 
+# Non-headless mode, with browser interface
+./xiaohongshu-mcp-darwin-arm64 -headless=false
+```
+
+**Using Source Code:**
+```bash
 # Default: Headless mode, no browser interface
 go run .
 
@@ -413,15 +506,18 @@ After successful connection, you can use the following MCP tools:
 
 - `check_login_status` - Check RedNote login status (no parameters)
 - `publish_content` - Publish image-text content to RedNote (required: title, content, images)
+  - `images`: Supports HTTP links or local absolute paths, local paths recommended
 - `list_feeds` - Get RedNote homepage recommendation list (no parameters)
 - `search_feeds` - Search RedNote content (required: keyword)
 - `get_feed_detail` - Get post details (required: feed_id, xsec_token)
 - `post_comment_to_feed` - Post comments to RedNote posts (required: feed_id, xsec_token, content)
+- `user_profile` - Get user profile information (required: user_id, xsec_token)
 
 ### 2.4. Usage Examples
 
 Using Claude Code to publish content to RedNote:
 
+**Example 1: Using HTTP Image Links**
 ```
 Help me write a post to publish on RedNote,
 with image: https://cn.bing.com/th?id=OHR.MaoriRock_EN-US6499689741_UHD.jpg&w=3840
@@ -430,19 +526,36 @@ The image is: "Maori rock carving at Ngātoroirangi Mine Bay, Lake Taupo, New Ze
 Use xiaohongshu-mcp for publishing.
 ```
 
+**Example 2: Using Local Image Paths (Recommended)**
+```
+Help me write a post about spring to publish on RedNote,
+using these local images:
+- /Users/username/Pictures/spring_flowers.jpg
+- /Users/username/Pictures/cherry_blossom.jpg
+
+Use xiaohongshu-mcp for publishing.
+```
+
 ![claude-cli publishing](./assets/claude_push.gif)
 
 **Publishing Result:**
 
-<img src="./assets/publish_result.jpeg" alt="xiaohongshu-mcp publishing result" width="400">
+<img src="./assets/publish_result.jpeg" alt="xiaohongshu-mcp publishing result" width="300">
 
-## ShowCase
+## 3. 🌟 Community Showcases
 
-Refer directly to user cases: [ShowCase](./examples/README.md)
+> 💡 **Highly Recommended**: These are real-world use cases from community contributors, featuring detailed configuration steps and practical experiences!
 
-1. [n8n Complete Tutorial](./examples/n8n/README.md)
+### 📚 Complete Tutorial List
 
-## RedNote MCP Community Group
+1. **[n8n Complete Integration Tutorial](./examples/n8n/README.md)** - Workflow automation platform integration
+2. **[Cherry Studio Complete Configuration Tutorial](./examples/cherrystudio/README.md)** - Perfect AI client integration
+
+> 🎯 **Tip**: Click the links above to view detailed step-by-step tutorials for quick setup of various integration solutions!
+>
+> 📢 **Contributions Welcome**: If you have new integration cases, feel free to submit a PR to share with the community!
+
+## 4. RedNote MCP Community Group
 
 Since the project has just started, there will be many issues. Let's create a group to discuss problems together and contribute to the open source project. ~~Scan my WeChat QR code to join the technical discussion group~~.
 
@@ -457,20 +570,59 @@ Switched to Feishu group, scan QR code to join directly
 
 </details>
 
-<!-- Two-column layout: Feishu Group 2 | WeChat Group -->
+<details>
+  <summary>【WeChat Group 1】Full </summary>
 
-| 【Feishu Group 2】: Scan to join                                                                                                    | 【WeChat Group】: Scan to join                                                                                                       |
+  <img src="https://github.com/user-attachments/assets/34c51c3a-d5fd-4086-9d37-a5a5284264c9" alt="WechatIMG119" width="300">
+
+</details>
+
+<details>
+  <summary>【WeChat Group 2】Full </summary>
+
+  <img src="https://github.com/user-attachments/assets/d2c0340c-33e7-4d19-a9f5-cd581b63bd56" alt="WechatIMG119" width="300">
+
+</details>
+
+<!-- Two-column layout: Feishu Group 2 | WeChat Group 3 -->
+
+| 【Feishu Group 2】: Scan to join                                                                                                    | 【WeChat Group 3】: Scan to join                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/user-attachments/assets/ca1f5d6e-b1bf-4c15-9975-ff75f339ec9b" alt="qrcode_2qun" width="300"> | <img src="https://github.com/user-attachments/assets/34c51c3a-d5fd-4086-9d37-a5a5284264c9" alt="WechatIMG119" width="300"> |
+| <img src="https://github.com/user-attachments/assets/ca1f5d6e-b1bf-4c15-9975-ff75f339ec9b" alt="qrcode_2qun" width="300"> | <img src="https://github.com/user-attachments/assets/7665056d-be56-4bf3-a9f3-77f967079929" alt="WechatIMG119" width="300"> |
 
-## 🙏 Thanks to Contributors
 
-Thanks to all friends who have contributed to this project!
+## 🙏 Thanks to Contributors ✨
 
-<a href="https://github.com/xpzouying/xiaohongshu-mcp/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=xpzouying/xiaohongshu-mcp" />
-</a>
+Thanks to all friends who have contributed to this project! (In no particular order)
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://haha.ai"><img src="https://avatars.githubusercontent.com/u/3946563?v=4?s=100" width="100px;" alt="zy"/><br /><sub><b>zy</b></sub></a><br /><a href="https://github.com/xpzouying/xiaohongshu-mcp/commits?author=xpzouying" title="Code">💻</a> <a href="#ideas-xpzouying" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/xpzouying/xiaohongshu-mcp/commits?author=xpzouying" title="Documentation">📖</a> <a href="#design-xpzouying" title="Design">🎨</a> <a href="#maintenance-xpzouying" title="Maintenance">🚧</a> <a href="#infra-xpzouying" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/xpzouying/xiaohongshu-mcp/pulls?q=is%3Apr+reviewed-by%3Axpzouying" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.hwbuluo.com"><img src="https://avatars.githubusercontent.com/u/1271815?v=4?s=100" width="100px;" alt="clearwater"/><br /><sub><b>clearwater</b></sub></a><br /><a href="https://github.com/xpzouying/xiaohongshu-mcp/commits?author=esperyong" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/laryzhong"><img src="https://avatars.githubusercontent.com/u/47939471?v=4?s=100" width="100px;" alt="Zhongpeng"/><br /><sub><b>Zhongpeng</b></sub></a><br /><a href="https://github.com/xpzouying/xiaohongshu-mcp/commits?author=laryzhong" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/DTDucas"><img src="https://avatars.githubusercontent.com/u/105262836?v=4?s=100" width="100px;" alt="Duong Tran"/><br /><sub><b>Duong Tran</b></sub></a><br /><a href="https://github.com/xpzouying/xiaohongshu-mcp/commits?author=DTDucas" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Angiin"><img src="https://avatars.githubusercontent.com/u/17389304?v=4?s=100" width="100px;" alt="Angiin"/><br /><sub><b>Angiin</b></sub></a><br /><a href="https://github.com/xpzouying/xiaohongshu-mcp/commits?author=Angiin" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/muhenan"><img src="https://avatars.githubusercontent.com/u/43441941?v=4?s=100" width="100px;" alt="Henan Mu"/><br /><sub><b>Henan Mu</b></sub></a><br /><a href="https://github.com/xpzouying/xiaohongshu-mcp/commits?author=muhenan" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 
 ### ✨ Special Thanks
 
-- [@wanpengxie](https://github.com/wanpengxie)
+| Contributors |
+| --- |
+| [<img src="https://avatars.githubusercontent.com/wanpengxie" width="100px;"><br>@wanpengxie](https://github.com/wanpengxie) |
+
+
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

@@ -1,3 +1,5 @@
-time="2025-09-24T16:31:33+08:00" level=info msg="启动 HTTP 服务器: :18060"
-time="2025-09-24T16:31:35+08:00" level=info msg="Received Streamable HTTP request" method=initialize
-[GIN] 2025/09/24 - 16:31:35 | 200 |     321.167µs |             ::1 | POST     "/mcp"
+time="2025-09-24T16:56:56+08:00" level=info msg="启动 HTTP 服务器: :18060"
+time="2025-09-24T16:56:59+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 16:56:59 | 200 |       474.5µs |             ::1 | POST     "/mcp"
+time="2025-09-24T16:57:07+08:00" level=info msg="正在关闭服务器..."
+time="2025-09-24T16:57:07+08:00" level=info msg="服务器已关闭"

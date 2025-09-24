@@ -180,7 +180,7 @@ func (s *AppServer) processToolsList(request *JSONRPCRequest) *JSONRPCResponse {
 					},
 					"images": map[string]interface{}{
 						"type":        "array",
-						"description": "图片路径列表，支持本地路径或URL（至少需要1张图片）",
+						"description": "图片路径列表（至少需要1张图片）。支持两种方式：1. HTTP/HTTPS图片链接（自动下载）；2. 本地图片绝对路径（推荐，如:/Users/user/image.jpg）",
 						"items": map[string]interface{}{
 							"type": "string",
 						},
@@ -235,6 +235,24 @@ func (s *AppServer) processToolsList(request *JSONRPCRequest) *JSONRPCResponse {
 					},
 				},
 				"required": []string{"feed_id", "xsec_token"},
+			},
+		},
+		{
+			"name":        "user_profile",
+			"description": "获取小红书用户主页，返回用户基本信息，关注、粉丝、获赞量及其笔记内容",
+			"inputSchema": map[string]interface{}{
+				"type": "object",
+				"properties": map[string]interface{}{
+					"user_id": map[string]interface{}{
+						"type":        "string",
+						"description": "小红书用户ID，从Feed列表获取",
+					},
+					"xsec_token": map[string]interface{}{
+						"type":        "string",
+						"description": "访问令牌，从Feed列表的xsecToken字段获取",
+					},
+				},
+				"required": []string{"user_id", "xsec_token"},
 			},
 		},
 		{
@@ -348,6 +366,8 @@ func (s *AppServer) processToolCall(ctx context.Context, request *JSONRPCRequest
 		result = s.handleSearchFeeds(ctx, toolArgs)
 	case "get_feed_detail":
 		result = s.handleGetFeedDetail(ctx, toolArgs)
+	case "user_profile":
+		result = s.handleUserProfile(ctx, toolArgs)
 	case "post_comment_to_feed":
 		result = s.handlePostComment(ctx, toolArgs)
 	case "download_images":

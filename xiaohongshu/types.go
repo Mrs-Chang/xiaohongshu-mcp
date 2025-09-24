@@ -50,11 +50,10 @@ type NoteCard struct {
 
 // User 表示用户信息
 type User struct {
-	UserID    string `json:"userId"`
-	Nickname  string `json:"nickname"`
-	NickName  string `json:"nickName"`
-	Avatar    string `json:"avatar"`
-	XsecToken string `json:"xsecToken"`
+	UserID   string `json:"userId"`
+	Nickname string `json:"nickname"`
+	NickName string `json:"nickName"`
+	Avatar   string `json:"avatar"`
 }
 
 // InteractInfo 表示互动信息
@@ -147,4 +146,37 @@ type Comment struct {
 	SubCommentCount string    `json:"subCommentCount"`
 	SubComments     []Comment `json:"subComments"`
 	ShowTags        []string  `json:"showTags"`
+}
+
+// UserProfileResponse 用户详情页完整响应
+type UserProfileResponse struct {
+	UserBasicInfo UserBasicInfo      `json:"userBasicInfo"`
+	Interactions  []UserInteractions `json:"interactions"`
+	Feeds         []Feed             `json:"feeds"`
+}
+
+// UserPageData 用户的详细信息
+type UserPageData struct {
+	RawValue struct {
+		Interactions []UserInteractions `json:"interactions"`
+		BasicInfo    UserBasicInfo      `json:"basicInfo"`
+	} `json:"_rawValue"`
+}
+
+// UserBasicInfo 用户的基本信息
+type UserBasicInfo struct {
+	Gender     int    `json:"gender"`
+	IpLocation string `json:"ipLocation"`
+	Desc       string `json:"desc"`
+	Imageb     string `json:"imageb"`
+	Nickname   string `json:"nickname"`
+	Images     string `json:"images"`
+	RedId      string `json:"redId"`
+}
+
+// UserInteractions 用户的 关注 粉丝 收藏量
+type UserInteractions struct {
+	Type  string `json:"type"`  // follows fans interaction
+	Name  string `json:"name"`  // 关注 粉丝 获赞与收藏
+	Count string `json:"count"` // 数量
 }

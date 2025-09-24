@@ -3,6 +3,7 @@ package xiaohongshu
 import (
 	"context"
 	"log/slog"
+	"os"
 	"strings"
 	"time"
 
@@ -41,8 +42,20 @@ func NewPublishImageAction(page *rod.Page) (*PublishAction, error) {
 	time.Sleep(1 * time.Second)
 
 	createElems := pp.MustElements("div.creator-tab")
-	slog.Info("foundcreator-tab elements", "count", len(createElems))
+
+	// 过滤掉隐藏的元素
+	var visibleElems []*rod.Element
 	for _, elem := range createElems {
+		if isElementVisible(elem) {
+			visibleElems = append(visibleElems, elem)
+		}
+	}
+
+	if len(visibleElems) == 0 {
+		return nil, errors.New("没有找到上传图文元素")
+	}
+
+	for _, elem := range visibleElems {
 		text, err := elem.Text()
 		if err != nil {
 			slog.Error("获取元素文本失败", "error", err)
@@ -86,6 +99,13 @@ func (p *PublishAction) Publish(ctx context.Context, content PublishImageContent
 func uploadImages(page *rod.Page, imagesPaths []string) error {
 	pp := page.Timeout(30 * time.Second)
 
+	// 验证文件路径有效性
+	for _, path := range imagesPaths {
+		if _, err := os.Stat(path); os.IsNotExist(err) {
+			return errors.Wrapf(err, "图片文件不存在: %s", path)
+		}
+	}
+
 	// 等待上传输入框出现
 	uploadInput := pp.MustElement(".upload-input")
 
@@ -94,13 +114,13 @@ func uploadImages(page *rod.Page, imagesPaths []string) error {
 
 	// 增加等待时间，确保图片完全上传完成
 	// 根据图片数量调整等待时间，每张图片至少等待5秒
-	waitTime := len(imagesPaths) * 5
-	if waitTime < 10 {
-		waitTime = 10 // 最少等待10秒
-	}
+	// waitTime := len(imagesPaths) * 5
+	// if waitTime < 10 {
+	// 	waitTime = 10 // 最少等待10秒
+	// }
 
-	slog.Info("等待图片上传完成", "图片数量", len(imagesPaths), "等待时间(秒)", waitTime)
-	time.Sleep(time.Duration(waitTime) * time.Second)
+	// slog.Info("等待图片上传完成", "图片数量", len(imagesPaths), "等待时间(秒)", waitTime)
+	// time.Sleep(time.Duration(waitTime) * time.Second)
 
 	// 尝试检查图片是否上传成功的指示器
 	// 查找可能的上传完成标识
@@ -112,8 +132,39 @@ func uploadImages(page *rod.Page, imagesPaths []string) error {
 		slog.Info("检测到图片预览")
 	}).
 		MustDo()
+	// 等待并验证上传完成
+	return waitForUploadComplete(pp, len(imagesPaths))
+}
 
-	return nil
+// waitForUploadComplete 等待并验证上传完成
+func waitForUploadComplete(page *rod.Page, expectedCount int) error {
+	maxWaitTime := 60 * time.Second
+	checkInterval := 500 * time.Millisecond
+	start := time.Now()
+
+	slog.Info("开始等待图片上传完成", "expected_count", expectedCount)
+
+	for time.Since(start) < maxWaitTime {
+		// 使用具体的pr类名检查已上传的图片
+		uploadedImages, err := page.Elements(".img-preview-area .pr")
+
+		slog.Info("uploadedImages", "uploadedImages", uploadedImages)
+
+		if err == nil {
+			currentCount := len(uploadedImages)
+			slog.Info("检测到已上传图片", "current_count", currentCount, "expected_count", expectedCount)
+			if currentCount >= expectedCount {
+				slog.Info("所有图片上传完成", "count", currentCount)
+				return nil
+			}
+		} else {
+			slog.Debug("未找到已上传图片元素")
+		}
+
+		time.Sleep(checkInterval)
+	}
+
+	return errors.New("上传超时，请检查网络连接和图片大小")
 }
 
 func submitPublish(page *rod.Page, title, content string, tags []string) error {
@@ -284,4 +335,30 @@ func findTextboxParent(elem *rod.Element) *rod.Element {
 		currentElem = parent
 	}
 	return nil
+}
+
+// isElementVisible 检查元素是否可见
+func isElementVisible(elem *rod.Element) bool {
+
+	// 检查是否有隐藏样式
+	style, err := elem.Attribute("style")
+	if err == nil && style != nil {
+		styleStr := *style
+
+		if strings.Contains(styleStr, "left: -9999px") ||
+			strings.Contains(styleStr, "top: -9999px") ||
+			strings.Contains(styleStr, "position: absolute; left: -9999px") ||
+			strings.Contains(styleStr, "display: none") ||
+			strings.Contains(styleStr, "visibility: hidden") {
+			return false
+		}
+	}
+
+	visible, err := elem.Visible()
+	if err != nil {
+		slog.Warn("无法获取元素可见性", "error", err)
+		return true
+	}
+
+	return visible
 }
