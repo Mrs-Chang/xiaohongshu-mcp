@@ -20,7 +20,7 @@
     },
     {
       "parameters": {
-        "endpointUrl": "http://192.168.31.35:18060/mcp",
+        "endpointUrl": "http://192.168.0.104:18060/mcp",
         "serverTransport": "httpStreamable",
         "options": {}
       },

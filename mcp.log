@@ -1,5 +1,240 @@
-time="2025-09-24T16:56:56+08:00" level=info msg="启动 HTTP 服务器: :18060"
-time="2025-09-24T16:56:59+08:00" level=info msg="Received Streamable HTTP request" method=initialize
-[GIN] 2025/09/24 - 16:56:59 | 200 |       474.5µs |             ::1 | POST     "/mcp"
-time="2025-09-24T16:57:07+08:00" level=info msg="正在关闭服务器..."
-time="2025-09-24T16:57:07+08:00" level=info msg="服务器已关闭"
+time="2025-09-24T20:41:54+08:00" level=info msg="启动 HTTP 服务器: :18060"
+time="2025-09-24T20:41:57+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:41:57 | 200 |     417.166µs |             ::1 | POST     "/mcp"
+time="2025-09-24T20:42:34+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:42:34 | 200 |       377.5µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-24T20:42:34+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:42:34 | 200 |      89.584µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-24T20:42:34+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:42:34 | 200 |     223.166µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-24T20:44:05+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:44:05 | 200 |     695.292µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:05+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:44:05 | 200 |     102.584µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:05+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:44:05 | 200 |     201.583µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:15+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:44:15 | 200 |      669.25µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:15+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:44:15 | 200 |     276.166µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:15+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:44:15 | 200 |     392.375µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:16+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:44:16 | 200 |     324.291µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:16+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:44:16 | 200 |      97.083µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:16+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:44:16 | 200 |     183.833µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:44:16+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-24T20:44:16+08:00" level=info msg="MCP: 检查登录状态"
+[GIN] 2025/09/24 - 20:45:16 | 200 |          1m0s |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:20+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:45:20 | 200 |     397.125µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:20+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:45:20 | 200 |     269.625µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:20+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:45:20 | 200 |     447.125µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:25+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:45:25 | 200 |     489.834µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:25+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:45:25 | 200 |     187.417µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:25+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:45:25 | 200 |     241.542µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:26+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:45:26 | 200 |     387.709µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:26+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:45:26 | 200 |      73.916µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:26+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:45:26 | 200 |     291.708µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:45:26+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-24T20:45:26+08:00" level=info msg="MCP: 检查登录状态"
+[GIN] 2025/09/24 - 20:45:38 | 200 | 11.742813583s |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:46:29+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:46:29 | 200 |    1.356958ms |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:46:29+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:46:29 | 200 |     112.666µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:46:29+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:46:29 | 200 |     262.292µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:46:58+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:46:58 | 200 |     450.208µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:46:58+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:46:58 | 200 |      83.625µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:46:58+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:46:58 | 200 |         218µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:48:18+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:48:18 | 200 |     784.584µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:48:18+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:48:18 | 200 |     126.083µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:48:18+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:48:18 | 200 |     206.208µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:52:34+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:52:34 | 200 |      736.25µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:52:34+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:52:34 | 200 |     269.667µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:52:34+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:52:34 | 200 |     278.166µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:52:59+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:52:59 | 200 |     365.084µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:52:59+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:52:59 | 200 |     135.459µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:52:59+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:52:59 | 200 |     241.375µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:54:38+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:54:38 | 200 |     519.917µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:54:38+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:54:38 | 200 |      68.583µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:54:38+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:54:38 | 200 |     190.708µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:55:10+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:55:10 | 200 |     382.709µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:55:10+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:55:10 | 200 |      81.458µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:55:10+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:55:10 | 200 |     155.667µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:55:31+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:55:31 | 200 |     339.583µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:55:31+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:55:31 | 200 |      95.042µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:55:31+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:55:31 | 200 |     211.583µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:56:30+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:56:30 | 200 |     1.09825ms |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:56:30+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:56:30 | 200 |     129.792µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:56:30+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:56:30 | 200 |     255.209µs |   192.168.0.104 | POST     "/mcp"
+[GIN] 2025/09/24 - 20:57:45 | 405 |      41.208µs |   192.168.0.104 | HEAD     "/mcp"
+time="2025-09-24T20:57:57+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:57:57 | 200 |      91.208µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:24+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:59:24 | 200 |    1.045417ms |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:24+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:59:24 | 200 |         138µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:24+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:59:24 | 200 |     397.584µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:25+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:59:25 | 200 |     144.084µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:25+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:59:25 | 200 |      57.208µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:25+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:59:25 | 200 |     161.625µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:26+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 20:59:26 | 200 |         220µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:26+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 20:59:26 | 200 |      174.25µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:26+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 20:59:26 | 200 |    1.126041ms |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T20:59:26+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-24T20:59:26+08:00" level=info msg="MCP: 检查登录状态"
+[GIN] 2025/09/24 - 20:59:32 | 200 |  6.089970875s |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:01:42+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:01:42 | 200 |     578.459µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:01:42+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:01:42 | 200 |      78.042µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:01:42+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:01:42 | 200 |     598.375µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:01:57+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:01:57 | 200 |     741.083µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:01:57+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:01:57 | 200 |      93.667µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:01:57+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:01:57 | 200 |     180.625µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:06+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:02:06 | 200 |       1.177ms |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:06+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:02:06 | 200 |     122.584µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:06+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:02:06 | 200 |     244.958µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:10+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:02:10 | 200 |     131.125µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:10+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:02:10 | 200 |      60.875µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:10+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:02:10 | 200 |     127.292µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:11+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:02:11 | 200 |     146.125µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:11+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:02:11 | 200 |      72.625µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:11+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:02:11 | 200 |     158.291µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:11+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-24T21:02:11+08:00" level=info msg="MCP: 检查登录状态"
+[GIN] 2025/09/24 - 21:02:17 | 200 |  6.091271458s |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:31+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:02:31 | 200 |     213.209µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:31+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:02:31 | 200 |     114.041µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:31+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:02:31 | 200 |     204.167µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:02:36+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-24T21:02:36+08:00" level=info msg="MCP: 检查登录状态"
+[GIN] 2025/09/24 - 21:02:42 | 200 |  5.893988584s |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:03:29+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:03:29 | 200 |     877.042µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:03:29+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:03:29 | 200 |      60.542µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:03:29+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:03:29 | 200 |     158.125µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:03+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:04:03 | 200 |     578.417µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:03+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:04:03 | 200 |     101.917µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:03+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:04:03 | 200 |     207.792µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:21+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:04:21 | 200 |     165.958µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:21+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:04:21 | 200 |     163.333µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:21+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:04:21 | 200 |     223.458µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:30+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:04:30 | 200 |     169.458µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:30+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:04:30 | 200 |          98µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:30+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:04:30 | 200 |     236.666µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:36+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:04:36 | 200 |      847.75µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:36+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:04:36 | 200 |     159.167µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:36+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:04:36 | 200 |         342µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:04:36+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-24T21:04:36+08:00" level=info msg="MCP: 搜索Feeds"
+time="2025-09-24T21:04:36+08:00" level=info msg="MCP: 搜索Feeds - 关键词: 重庆打卡, 滚动次数: 0"
+[GIN] 2025/09/24 - 21:04:44 | 200 |  7.330556042s |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:05:40+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:05:40 | 200 |    1.046625ms |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:05:40+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:05:40 | 200 |      69.458µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:05:40+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:05:40 | 200 |     251.292µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:06:12+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:06:12 | 200 |     678.875µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:06:12+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:06:12 | 200 |      84.916µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:06:12+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:06:12 | 200 |       162.5µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:06:33+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:06:33 | 200 |     285.125µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:06:33+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:06:33 | 200 |       76.25µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:06:33+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:06:33 | 200 |     220.167µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:07:32+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:07:32 | 200 |    1.223709ms |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:07:32+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:07:32 | 200 |     156.375µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:07:32+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:07:32 | 200 |     259.417µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:07:36+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
+time="2025-09-24T21:07:36+08:00" level=info msg="MCP: 检查登录状态"
+[GIN] 2025/09/24 - 21:07:43 | 200 |  6.252463625s |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:08:09+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 21:08:09 | 200 |     307.625µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:08:09+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
+[GIN] 2025/09/24 - 21:08:09 | 200 |     136.958µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:08:09+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
+[GIN] 2025/09/24 - 21:08:09 | 200 |         477µs |   192.168.0.104 | POST     "/mcp"
+time="2025-09-24T21:08:52+08:00" level=info msg="正在关闭服务器..."
+time="2025-09-24T21:08:52+08:00" level=info msg="服务器已关闭"
