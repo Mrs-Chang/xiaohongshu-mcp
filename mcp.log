@@ -1,22 +1,3 @@
-time="2025-09-19T17:34:07+08:00" level=info msg="启动 HTTP 服务器: :18060"
-time="2025-09-19T17:34:09+08:00" level=info msg="Received Streamable HTTP request" method=initialize
-[GIN] 2025/09/19 - 17:34:09 | 200 |     322.583µs |             ::1 | POST     "/mcp"
-time="2025-09-19T17:34:19+08:00" level=info msg="Received Streamable HTTP request" method=tools/call
-time="2025-09-19T17:34:19+08:00" level=info msg="MCP: 搜索Feeds"
-time="2025-09-19T17:34:19+08:00" level=info msg="MCP: 搜索Feeds - 关键词: 表情包, 滚动次数: 3"
-开始滚动加载更多内容，初始帖子数量: 22
-第 1/3 次滚动...
-滚动后帖子数量: 42 (新增: 20)
-第 2/3 次滚动...
-滚动后帖子数量: 64 (新增: 22)
-第 3/3 次滚动...
-滚动后帖子数量: 64 (新增: 0)
-检测到没有新内容加载，可能已到达页面底部
-滚动完成，最终帖子数量: 64
-[GIN] 2025/09/19 - 17:34:34 | 200 | 15.358868541s |       127.0.0.1 | POST     "/mcp"
-time="2025-09-19T17:36:56+08:00" level=info msg="Received Streamable HTTP request" method=initialize
-[GIN] 2025/09/19 - 17:36:56 | 200 |     410.833µs |       127.0.0.1 | POST     "/mcp"
-time="2025-09-19T17:36:56+08:00" level=info msg="Received Streamable HTTP request" method=notifications/initialized
-[GIN] 2025/09/19 - 17:36:56 | 200 |       66.75µs |       127.0.0.1 | POST     "/mcp"
-time="2025-09-19T17:36:56+08:00" level=info msg="Received Streamable HTTP request" method=tools/list
-[GIN] 2025/09/19 - 17:36:56 | 200 |     430.583µs |       127.0.0.1 | POST     "/mcp"
+time="2025-09-24T16:31:33+08:00" level=info msg="启动 HTTP 服务器: :18060"
+time="2025-09-24T16:31:35+08:00" level=info msg="Received Streamable HTTP request" method=initialize
+[GIN] 2025/09/24 - 16:31:35 | 200 |     321.167µs |             ::1 | POST     "/mcp"
