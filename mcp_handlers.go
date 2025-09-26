@@ -4,9 +4,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/sirupsen/logrus"
+	"strconv"
 	"strings"
 	"time"
+
+	"github.com/sirupsen/logrus"
 )
 
 // MCP 工具处理函数
@@ -186,19 +188,23 @@ func (s *AppServer) handleSearchFeeds(ctx context.Context, args map[string]inter
 	scrollCount := 0
 	scrollInterval := 0
 
-	if maxResults, ok := args["max_results"].(float64); ok {
-		if maxResults > 0 {
-			// 根据期望的结果数量计算滚动次数
-			// 小红书初始加载约22个帖子，每次滚动大约加载10-20个
-			scrollCount = int(maxResults / 15) // 估算需要的滚动次数
-			if scrollCount > 10 {
-				scrollCount = 10 // 限制最大滚动次数
+	if maxResultsStr, ok := args["max_results"].(string); ok && maxResultsStr != "" {
+		if maxResults, err := strconv.Atoi(maxResultsStr); err == nil {
+			if maxResults > 0 {
+				// 根据期望的结果数量计算滚动次数
+				// 小红书初始加载约22个帖子，每次滚动大约加载10-20个
+				scrollCount = int(maxResults / 15) // 估算需要的滚动次数
+				if scrollCount > 10 {
+					scrollCount = 10 // 限制最大滚动次数
+				}
+				scrollInterval = 2 // 每次滚动间隔2秒
+			} else if maxResults == -1 {
+				// -1 表示尽可能多的结果
+				scrollCount = 10
+				scrollInterval = 2
 			}
-			scrollInterval = 2 // 每次滚动间隔2秒
-		} else if maxResults == -1 {
-			// -1 表示尽可能多的结果
-			scrollCount = 10
-			scrollInterval = 2
+		} else {
+			logrus.Warnf("MCP: max_results参数格式错误: %s, 将使用默认值", maxResultsStr)
 		}
 	}
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
@@ -104,8 +105,31 @@ func (s *AppServer) searchFeedsHandler(c *gin.Context) {
 		return
 	}
 
-	// 搜索 Feeds
-	result, err := s.xiaohongshuService.SearchFeeds(c.Request.Context(), keyword)
+	// 添加max_results参数支持
+	maxResults := 0
+	if maxResultsStr := c.Query("max_results"); maxResultsStr != "" {
+		if mr, err := strconv.Atoi(maxResultsStr); err == nil {
+			maxResults = mr
+		}
+	}
+
+	// 计算滚动参数（与MCP处理逻辑保持一致）
+	scrollCount := 0
+	scrollInterval := 0
+	if maxResults > 0 {
+		scrollCount = int(maxResults / 15)
+		if scrollCount > 10 {
+			scrollCount = 10
+		}
+		scrollInterval = 2
+	} else if maxResults == -1 {
+		scrollCount = 10
+		scrollInterval = 2
+	}
+
+	// 使用增强版搜索方法，与MCP保持一致
+	result, err := s.xiaohongshuService.SearchFeedsWithURLsAndScroll(
+		c.Request.Context(), keyword, scrollCount, scrollInterval)
 	if err != nil {
 		respondError(c, http.StatusInternalServerError, "SEARCH_FEEDS_FAILED",
 			"搜索Feeds失败", err.Error())

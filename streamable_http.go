@@ -223,6 +223,10 @@ func (s *AppServer) processToolsList(request *JSONRPCRequest) *JSONRPCResponse {
 						"type":        "string",
 						"description": "搜索关键词",
 					},
+					"max_results": map[string]interface{}{
+						"type":        "string",
+						"description": "期望获取的最大结果数量。默认为22个（初始加载量）。设置更大值会触发滚动加载更多内容。设置-1表示尽可能多的结果（最多滚动10次）。示例：'30', '50', '-1'",
+					},
 				},
 				"required": []string{"keyword"},
 			},
