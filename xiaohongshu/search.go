@@ -71,11 +71,12 @@ func (s *SearchAction) SearchWithScroll(ctx context.Context, keyword string, scr
 func (s *SearchAction) performScrolling(page *rod.Page, scrollCount int, scrollInterval time.Duration) error {
 	// 设置默认滚动间隔
 	if scrollInterval == 0 {
-		scrollInterval = 2 * time.Second
+		scrollInterval = time.Second
 	}
 
 	// 获取初始的帖子数量，用于监控是否有新内容加载
 	initialCount := s.getCurrentFeedCount(page)
+	previousCount := initialCount // 保存上一次的数量，用于比较
 
 	fmt.Printf("开始滚动加载更多内容，初始帖子数量: %d\n", initialCount)
 
@@ -84,6 +85,10 @@ func (s *SearchAction) performScrolling(page *rod.Page, scrollCount int, scrollI
 
 		// 执行滚动操作
 		_, err := page.Eval(`() => {
+			// 获取滚动前的高度
+			const beforeHeight = document.body.scrollHeight;
+			console.log('滚动前页面高度:', beforeHeight);
+			
 			// 滚动到页面底部
 			window.scrollTo({
 				top: document.body.scrollHeight,
@@ -92,15 +97,25 @@ func (s *SearchAction) performScrolling(page *rod.Page, scrollCount int, scrollI
 			
 			// 记录滚动信息
 			console.log('已滚动到位置:', window.pageYOffset);
-			return window.pageYOffset;
+			console.log('滚动后页面高度:', document.body.scrollHeight);
+			
+			return {
+				scrollPosition: window.pageYOffset,
+				beforeHeight: beforeHeight,
+				afterHeight: document.body.scrollHeight
+			};
 		}`)
 
 		if err != nil {
 			return fmt.Errorf("scroll operation failed: %w", err)
 		}
 
-		// 等待内容加载
+		// 等待内容加载 - 增加等待时间
+		fmt.Printf("等待 %v 让内容加载...\n", scrollInterval)
 		time.Sleep(scrollInterval)
+
+		// 再等待一点时间确保懒加载完成
+		time.Sleep(1 * time.Second)
 
 		// 等待页面稳定
 		page.MustWaitStable()
@@ -109,21 +124,17 @@ func (s *SearchAction) performScrolling(page *rod.Page, scrollCount int, scrollI
 		currentCount := s.getCurrentFeedCount(page)
 		fmt.Printf("滚动后帖子数量: %d (新增: %d)\n", currentCount, currentCount-initialCount)
 
-		// 如果连续几次滚动都没有新内容，可能已经到底了
-		if i > 0 && currentCount == initialCount {
-			fmt.Println("检测到没有新内容加载，可能已到达页面底部")
-			break
-		}
-
-		initialCount = currentCount
+		// 移除提前停止逻辑，让滚动执行完整的次数
+		previousCount = currentCount // 更新上一次的数量
 	}
 
-	fmt.Printf("滚动完成，最终帖子数量: %d\n", initialCount)
+	fmt.Printf("滚动完成，最终帖子数量: %d\n", previousCount)
 	return nil
 }
 
 // getCurrentFeedCount 获取当前页面的帖子数量
 func (s *SearchAction) getCurrentFeedCount(page *rod.Page) int {
+	// 尝试多种方式获取帖子数量，以确保准确性
 	count, err := page.Eval(`() => {
 		if (window.__INITIAL_STATE__ && 
 			window.__INITIAL_STATE__.search && 
@@ -131,10 +142,13 @@ func (s *SearchAction) getCurrentFeedCount(page *rod.Page) int {
 			window.__INITIAL_STATE__.search.feeds._value) {
 			return window.__INITIAL_STATE__.search.feeds._value.length;
 		}
-		return 0;
+		
+		console.log('最终返回数量:', maxCount, '(state:', stateCount, ')');
+		return maxCount;
 	}`)
 
 	if err != nil {
+		fmt.Printf("获取帖子数量时出错: %v\n", err)
 		return 0
 	}
 
